@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeStep AI | Fall Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="navbar">
+        <a class="brand" href="/">SafeStep<span>AI</span></a>
+        <div class="system-status">
+            <span class="status-dot"></span>
+            Demo System
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-text">
+                <p class="eyebrow">SMART SAFETY MONITORING</p>
+                <h1>AI-Based Emergency<br>Fall Detection System</h1>
+                <p class="subtitle">
+                    Upload a CCTV video to process it with OpenCV.
+                    AI-based fall detection and emergency alerts are
+                    not connected in this demo.
+                </p>
+            </div>
+            <div class="hero-icon">⌁</div>
+        </section>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span class="stat-icon">▣</span>
+                <p>Video Processing</p>
+                <h3>OpenCV</h3>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">◉</span>
+                <p>Fall Detection</p>
+                <h3>Not Connected</h3>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">↗</span>
+                <p>Emergency Alerts</p>
+                <h3>Not Connected</h3>
+            </div>
+        </section>
+
+        <section class="workspace">
+            <div class="panel upload-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">STEP 01</p>
+                        <h2>Upload CCTV Video</h2>
+                    </div>
+                    <span class="number">01</span>
+                </div>
+
+                <form id="uploadForm">
+                    <label for="videoInput" class="drop-zone" id="dropZone">
+                        <div class="upload-icon">↑</div>
+                        <h3>Choose a video file</h3>
+                        <p>Click here to browse your computer</p>
+                        <span class="file-types">MP4 · AVI · MOV · MKV</span>
+                        <input
+                            type="file"
+                            id="videoInput"
+                            name="video"
+                            accept=".mp4,.avi,.mov,.mkv,video/*"
+                            required
+                        >
+                    </label>
+
+                    <div id="fileInfo" class="file-info hidden"></div>
+
+                    <button type="submit" id="analyzeBtn" class="primary-btn">
+                        Process Video <span>→</span>
+                    </button>
+                </form>
+
+                <div id="progressArea" class="progress-area hidden">
+                    <div class="progress-label">
+                        <span id="progressText">Processing video...</span>
+                        <span id="progressPercent">Please wait</span>
+                    </div>
+                    <div class="progress-track">
+                        <div id="progressBar" class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <p id="message" class="message" role="status"></p>
+            </div>
+
+            <div class="panel result-panel">
+                <div class="panel-heading">
+                    <div>
+                        <p class="eyebrow">STEP 02</p>
+                        <h2>Processing Results</h2>
+                    </div>
+                    <span class="number">02</span>
+                </div>
+
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">▤</div>
+                    <h3>Waiting for video</h3>
+                    <p>Upload a video and process it to see its technical details here.</p>
+                </div>
+
+                <div id="results" class="hidden">
+                    <div class="result-banner">
+                        <span class="success-icon">✓</span>
+                        <div>
+                            <strong id="resultStatus">Video processed</strong>
+                            <p>OpenCV processing completed</p>
+                        </div>
+                    </div>
+
+                    <p class="result-filename" id="resultFilename"></p>
+
+                    <div class="metrics">
+                        <div class="metric">
+                            <span>Duration</span>
+                            <strong id="duration">—</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Frame Rate</span>
+                            <strong id="fps">—</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Total Frames</span>
+                            <strong id="frameCount">—</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Resolution</span>
+                            <strong id="resolution">—</strong>
+                        </div>
+                        <div class="metric">
+                            <span>Sampled Frames</span>
+                            <strong id="sampledFrames">—</strong>
+                        </div>
+                    </div>
+
+                    <div class="notice">
+                        <strong>Detection status</strong>
+                        <p id="resultNote"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="workflow">
+            <p class="eyebrow">PROJECT WORKFLOW</p>
+            <h2>How SafeStep works</h2>
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <span>01</span>
+                    <h3>Video Input</h3>
+                    <p>Upload recorded CCTV footage.</p>
+                </div>
+                <div class="workflow-step">
+                    <span>02</span>
+                    <h3>OpenCV</h3>
+                    <p>Read video frames and metadata.</p>
+                </div>
+                <div class="workflow-step">
+                    <span>03</span>
+                    <h3>AI Model</h3>
+                    <p>To be integrated for actual fall detection.</p>
+                </div>
+                <div class="workflow-step">
+                    <span>04</span>
+                    <h3>Emergency Alert</h3>
+                    <p>To be integrated after detection.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            SafeStep AI · Academic project prototype · Not for real emergency monitoring
+        </footer>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
